@@ -1,2 +1,3 @@
-# rock-paper-scissors
-Cool rock paper scissors game
+Creating a rock paper scissors game
+
+Learning project from odin project
