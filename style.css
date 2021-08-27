@@ -7,3 +7,26 @@
 header{
     text-align: center;
 }
+
+.choice{
+    width: 100px;
+    height: 100px;
+    border: solid 5px black;
+    border-radius: 10px;
+}
+
+.choiceImg{
+    width: 100px;
+    height: 100px;
+    object-fit: contain; 
+}
+
+.imgLegend{
+    padding: 10px;
+}
+
+#choicesConatiner{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
