@@ -1,11 +1,16 @@
 //Get all possible choices from the document
 const choices = document.querySelectorAll('.choice')
+const playButton = document.querySelector('#startRound')
 
 //Add an event listener to all possible choices
 choices.forEach(choice => {
     choice.addEventListener('click', () => {
         changePlayersChoice(choice)
     })
+})
+
+playButton.addEventListener('click', () => {
+    getAiChoice()
 })
 
 //Add function changePlayersChoice
