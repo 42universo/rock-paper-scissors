@@ -1,6 +1,9 @@
 //Get all possible choices from the document
 const choices = document.querySelectorAll('.choice')
 const playButton = document.querySelector('#startRound')
+const aiChoices = ['scissors', 'rock', 'paper']
+
+
 
 //Add an event listener to all possible choices
 choices.forEach(choice => {
@@ -10,7 +13,8 @@ choices.forEach(choice => {
 })
 
 playButton.addEventListener('click', () => {
-    getAiChoice()
+    const aiChoice = getAiChoice()
+    changeAiSelection(aiChoice)
 })
 
 //Add function changePlayersChoice
@@ -34,4 +38,14 @@ const removeSelected = (node) => {
             choice.classList.remove('selected')
         }
     })
+}
+
+const getAiChoice = () => {
+    return aiChoices[Math.floor(Math.random() * 3)]
+}
+
+const changeAiSelection = (choice) => {
+    const machineSelection = document.querySelector('#machineSelected')
+    machineSelection.setAttribute('style', 'width:150px; height:150px; object-fit:contain')
+    machineSelection.setAttribute('src', `./images/${choice}.png`)
 }

@@ -57,6 +57,7 @@ header{
     width: null;
     height: null;
     object-fit: null; 
+    transform: scale(-1, -1)
 }
 
 #playerSelected{
