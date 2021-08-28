@@ -12,6 +12,7 @@ choices.forEach(choice => {
     })
 })
 
+//Add an event listener to play button
 playButton.addEventListener('click', () => {
     const aiChoice = getAiChoice()
     changeAiSelection(aiChoice)
@@ -40,12 +41,16 @@ const removeSelected = (node) => {
     })
 }
 
+//Randonly choose between rock paper or scissors
 const getAiChoice = () => {
     return aiChoices[Math.floor(Math.random() * 3)]
 }
 
 const changeAiSelection = (choice) => {
+    //Get machine selection div
     const machineSelection = document.querySelector('#machineSelected')
+    //Change machine selection image style 
     machineSelection.setAttribute('style', 'width:150px; height:150px; object-fit:contain')
+    //Load image selected randonly
     machineSelection.setAttribute('src', `./images/${choice}.png`)
 }
