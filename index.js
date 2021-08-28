@@ -10,8 +10,16 @@ choices.forEach(choice => {
 
 //Add function changePlayersChoice
 const changePlayersChoice = (node) => {
-    removeSelected(node) //Remove class selected from other div
-    node.classList.add('selected') //Add the class selecetd to the div when clicked
+     //Remove class selected from other div
+    removeSelected(node)
+    //Add the class selecetd to the div when clicked
+    node.classList.add('selected')
+    //Get the player selection 
+    const playerSelection = document.querySelector('#playerSelected') 
+     //Adjust the attributes of the player selection
+    playerSelection.setAttribute('style', 'width:150px; height:150px; object-fit:contain')
+    //Change the src from the player selection to the clicked choice
+    playerSelection.setAttribute('src', node.firstChild.getAttribute('src')) 
 }
 
 const removeSelected = (node) => {
