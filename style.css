@@ -68,3 +68,13 @@ header{
 .selected{
     border: solid 5px yellow;
 }
+
+#startRound{
+    display: block;
+    margin:auto;
+    margin-top: 30px;
+    width: 180px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 20px;
+}
