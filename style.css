@@ -64,3 +64,7 @@ header{
     height: null;
     object-fit: null; 
 }
+
+.selected{
+    border: solid 5px yellow;
+}
