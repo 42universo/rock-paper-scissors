@@ -2,7 +2,7 @@
 const choices = document.querySelectorAll('.choice')
 const playButton = document.querySelector('#startRound')
 const aiChoices = ['scissors', 'rock', 'paper']
-let machineWins = 0
+let machineWins = 4
 let playersWins = 0
 
 //Scnearios to be used to get the winner
@@ -87,9 +87,19 @@ const displayMessage = (msg) => {
     switch(msg){
         case 'WIN':
             playersWins+=1
+            if (playersWins === 5){
+                playersWins = 0
+                machineWins = 0
+                return alert('Congrats wou won!!!!')
+            }
             return alert('You won the round');
         case 'LOSE':
             machineWins+=1
+            if (machineWins === 5){
+                playersWins = 0
+                machineWins = 0
+                return alert('Thats so sad, the machine got the win!! Maybe you can win next time')
+            }
             return alert('The machine got the win');
         default:
             return alert('Thats a draw');
