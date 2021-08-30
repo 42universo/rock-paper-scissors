@@ -11,26 +11,24 @@ const scenarios = {'paper':{'rock':'WIN', 'paper':'DRAW', 'scissors':'LOSE'},
 
 //Add an event listener to all possible choices
 choices.forEach(choice => {
-    choice.addEventListener('click', () => {
-        changePlayersChoice(choice)
+    choice.addEventListener('click', async () => {
+        getPlayersChoice(choice)
+        const aiChoice = getAiChoice()
+        //Wait for a secons and move on
+        await sleep(1000)
+        changeAiSelection(aiChoice)
+        //Get the message
+        const message = getMessage(aiChoice, document.querySelector('.selected').firstChild.id)
+        //Display who won after the tiemout and reset the selection
+        await sleep(500)
+        //Wait half a second and display he message
+        displayMessage(message)
+        resetSelection()
     })
 })
 
-//Add an event listener to play button
-playButton.addEventListener('click', () => {
-    const aiChoice = getAiChoice()
-    changeAiSelection(aiChoice)
-    //Get the message
-    const message = getWinner(aiChoice, document.querySelector('.selected').firstChild.id)
-    //Display who won after the tiemout and reset the selection
-    setTimeout(() => {displayMessage(message); resetSelection()}, 500)
-    
-})
-
 //Add function changePlayersChoice
-const changePlayersChoice = (node) => {
-     //Remove class selected from other div
-    removeSelected(node)
+const getPlayersChoice = (node) => {
     //Add the class selecetd to the div when clicked
     node.classList.add('selected')
     //Get the player selection 
@@ -41,10 +39,10 @@ const changePlayersChoice = (node) => {
     playerSelection.setAttribute('src', node.firstChild.getAttribute('src')) 
 }
 
-const removeSelected = (node) => {
+const removeSelected = () => {
     choices.forEach(choice => {
         //Iterate from all choices and if it has the class selected, delete it
-        if(choice !== node & Array.from(choice.classList).includes('selected')){
+        if(Array.from(choice.classList).includes('selected')){
             choice.classList.remove('selected')
         }
     })
@@ -65,7 +63,7 @@ const changeAiSelection = (choice) => {
 }
 
 //Get the winner of the games
-const getWinner = (machine, player) => {
+const getMessage = (machine, player) => {
     return scenarios[player][machine]
 }
 
@@ -92,3 +90,8 @@ const displayMessage = (msg) => {
             return alert('Thats a draw');
     }
 }
+
+// Sleep function, credits to https://www.sitepoint.com/delay-sleep-pause-wait/
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
