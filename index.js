@@ -2,7 +2,7 @@
 const choices = document.querySelectorAll('.choice')
 const playButton = document.querySelector('#startRound')
 const aiChoices = ['scissors', 'rock', 'paper']
-let machineWins = 4
+let machineWins = 0
 let playersWins = 0
 
 //Scnearios to be used to get the winner
@@ -17,7 +17,7 @@ choices.forEach(choice => {
         getPlayersChoice(choice)
         const aiChoice = getAiChoice()
         //Wait for a secons and move on
-        await sleep(1000)
+        await sleep(500)
         changeAiSelection(aiChoice)
         //Get the message
         const message = getMessage(aiChoice, document.querySelector('.selected').firstChild.id)
