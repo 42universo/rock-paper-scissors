@@ -69,3 +69,7 @@ header{
 .selected{
     border: solid 5px yellow;
 }
+
+.winsContainer{
+    font-size: 30px;
+}

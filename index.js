@@ -2,6 +2,8 @@
 const choices = document.querySelectorAll('.choice')
 const playButton = document.querySelector('#startRound')
 const aiChoices = ['scissors', 'rock', 'paper']
+let machineWins = 0
+let playersWins = 0
 
 //Scnearios to be used to get the winner
 const scenarios = {'paper':{'rock':'WIN', 'paper':'DRAW', 'scissors':'LOSE'}, 
@@ -23,6 +25,7 @@ choices.forEach(choice => {
         await sleep(500)
         //Wait half a second and display he message
         displayMessage(message)
+        changeWins()
         resetSelection()
     })
 })
@@ -83,12 +86,19 @@ const resetSelection = () => {
 const displayMessage = (msg) => {
     switch(msg){
         case 'WIN':
+            playersWins+=1
             return alert('You won the round');
         case 'LOSE':
+            machineWins+=1
             return alert('The machine got the win');
         default:
             return alert('Thats a draw');
     }
+}
+
+const changeWins = () => {
+    document.querySelector('#nMachineWins').textContent = machineWins
+    document.querySelector('#nPlayerWins').textContent = playersWins
 }
 
 // Sleep function, credits to https://www.sitepoint.com/delay-sleep-pause-wait/
